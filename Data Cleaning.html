@@ -15514,8 +15514,10 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span> 
+<span class="k">def</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">words</span>
 </pre></div>
 
@@ -15543,77 +15545,20 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[60]:</div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-60-5af252f8861d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>result_df<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#39;bag_of_words_cleaned&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> result_df<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#39;bag_of_words_cleaned&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>apply<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-green-intense-fg ansi-bold">lambda</span> x <span class="ansi-yellow-intense-fg ansi-bold">:</span> remove_stopwords<span class="ansi-yellow-intense-fg ansi-bold">(</span>x<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      2</span> result_df<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#39;bag_of_words_cleaned&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>head<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
 
-<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\lib\site-packages\pandas\core\series.py</span> in <span class="ansi-cyan-fg">apply</span><span class="ansi-blue-intense-fg ansi-bold">(self, func, convert_dtype, args, **kwds)</span>
-<span class="ansi-green-fg">   3589</span>             <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">   3590</span>                 values <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>astype<span class="ansi-yellow-intense-fg ansi-bold">(</span>object<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>values
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 3591</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span>mapped <span class="ansi-yellow-intense-fg ansi-bold">=</span> lib<span class="ansi-yellow-intense-fg ansi-bold">.</span>map_infer<span class="ansi-yellow-intense-fg ansi-bold">(</span>values<span class="ansi-yellow-intense-fg ansi-bold">,</span> f<span class="ansi-yellow-intense-fg ansi-bold">,</span> convert<span class="ansi-yellow-intense-fg ansi-bold">=</span>convert_dtype<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   3592</span> 
-<span class="ansi-green-fg">   3593</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>mapped<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">and</span> isinstance<span class="ansi-yellow-intense-fg ansi-bold">(</span>mapped<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> Series<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
 
-<span class="ansi-green-intense-fg ansi-bold">pandas/_libs/lib.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.lib.map_infer</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-60-5af252f8861d&gt;</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-intense-fg ansi-bold">(x)</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>result_df<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#39;bag_of_words_cleaned&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> result_df<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#39;bag_of_words_cleaned&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>apply<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-green-intense-fg ansi-bold">lambda</span> x <span class="ansi-yellow-intense-fg ansi-bold">:</span> remove_stopwords<span class="ansi-yellow-intense-fg ansi-bold">(</span>x<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      2</span> result_df<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#39;bag_of_words_cleaned&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>head<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-59-234dfdbae513&gt;</span> in <span class="ansi-cyan-fg">remove_stopwords</span><span class="ansi-blue-intense-fg ansi-bold">(text)</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-green-intense-fg ansi-bold">def</span> remove_stopwords<span class="ansi-yellow-intense-fg ansi-bold">(</span>text<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 2</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>words <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>w <span class="ansi-green-intense-fg ansi-bold">for</span> w <span class="ansi-green-intense-fg ansi-bold">in</span> text <span class="ansi-green-intense-fg ansi-bold">if</span> w <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">in</span> stopwords<span class="ansi-yellow-intense-fg ansi-bold">.</span>words<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;english&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-fg">      3</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> words
-
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-59-234dfdbae513&gt;</span> in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-intense-fg ansi-bold">(.0)</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-green-intense-fg ansi-bold">def</span> remove_stopwords<span class="ansi-yellow-intense-fg ansi-bold">(</span>text<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 2</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>words <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>w <span class="ansi-green-intense-fg ansi-bold">for</span> w <span class="ansi-green-intense-fg ansi-bold">in</span> text <span class="ansi-green-intense-fg ansi-bold">if</span> w <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">in</span> stopwords<span class="ansi-yellow-intense-fg ansi-bold">.</span>words<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;english&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-fg">      3</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> words
-
-<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\lib\site-packages\nltk\corpus\reader\wordlist.py</span> in <span class="ansi-cyan-fg">words</span><span class="ansi-blue-intense-fg ansi-bold">(self, fileids, ignore_lines_startswith)</span>
-<span class="ansi-green-fg">     20</span>     &#34;&#34;&#34;
-<span class="ansi-green-fg">     21</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> words<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> fileids<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> ignore_lines_startswith<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;\n&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 22</span><span class="ansi-yellow-intense-fg ansi-bold">         return [line for line in line_tokenize(self.raw(fileids))
-</span><span class="ansi-green-fg">     23</span>                 if not line.startswith(ignore_lines_startswith)]
-<span class="ansi-green-fg">     24</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\lib\site-packages\nltk\corpus\reader\wordlist.py</span> in <span class="ansi-cyan-fg">raw</span><span class="ansi-blue-intense-fg ansi-bold">(self, fileids)</span>
-<span class="ansi-green-fg">     26</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> fileids <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> fileids <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_fileids
-<span class="ansi-green-fg">     27</span>         <span class="ansi-green-intense-fg ansi-bold">elif</span> isinstance<span class="ansi-yellow-intense-fg ansi-bold">(</span>fileids<span class="ansi-yellow-intense-fg ansi-bold">,</span> string_types<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> fileids <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>fileids<span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 28</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">return</span> concat<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">[</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>open<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>read<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> fileids<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     29</span> 
-<span class="ansi-green-fg">     30</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\lib\site-packages\nltk\corpus\reader\wordlist.py</span> in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-intense-fg ansi-bold">(.0)</span>
-<span class="ansi-green-fg">     26</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> fileids <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> fileids <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_fileids
-<span class="ansi-green-fg">     27</span>         <span class="ansi-green-intense-fg ansi-bold">elif</span> isinstance<span class="ansi-yellow-intense-fg ansi-bold">(</span>fileids<span class="ansi-yellow-intense-fg ansi-bold">,</span> string_types<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> fileids <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>fileids<span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 28</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">return</span> concat<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">[</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>open<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>read<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> fileids<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     29</span> 
-<span class="ansi-green-fg">     30</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\lib\site-packages\nltk\corpus\reader\api.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-intense-fg ansi-bold">(self, file)</span>
-<span class="ansi-green-fg">    211</span>         &#34;&#34;&#34;
-<span class="ansi-green-fg">    212</span>         encoding <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>encoding<span class="ansi-yellow-intense-fg ansi-bold">(</span>file<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 213</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>stream <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_root<span class="ansi-yellow-intense-fg ansi-bold">.</span>join<span class="ansi-yellow-intense-fg ansi-bold">(</span>file<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>open<span class="ansi-yellow-intense-fg ansi-bold">(</span>encoding<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    214</span>         <span class="ansi-green-intense-fg ansi-bold">return</span> stream
-<span class="ansi-green-fg">    215</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\lib\site-packages\nltk\data.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-intense-fg ansi-bold">(self, encoding)</span>
-<span class="ansi-green-fg">    313</span> 
-<span class="ansi-green-fg">    314</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> open<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> encoding<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 315</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>stream <span class="ansi-yellow-intense-fg ansi-bold">=</span> open<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_path<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;rb&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    316</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> encoding <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    317</span>             stream <span class="ansi-yellow-intense-fg ansi-bold">=</span> SeekableUnicodeStreamReader<span class="ansi-yellow-intense-fg ansi-bold">(</span>stream<span class="ansi-yellow-intense-fg ansi-bold">,</span> encoding<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>: </pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>0    [bullet01, bullet02, bullet03, bullet04, bulle...
+1    [application, method, assembled, depth, assemb...
+2    [bath, faucet, type, builtin, water, filter, b...
+3    [appliance, type, assembled, depth, assembled,...
+4    [battery, power, type, battery, size, bulb, ty...
+Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
+
 </div>
 
 </div>
@@ -15629,7 +15574,7 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># instantiate lemmatizer</span>
@@ -15647,7 +15592,7 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;bag_of_words_cleaned&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;bag_of_words_cleaned&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">word_lemmatizer</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -15667,7 +15612,7 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># instantiate stemmer</span>
@@ -15681,7 +15626,7 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">word_stemmer</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
@@ -15696,7 +15641,7 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;bag_of_words_cleaned&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;bag_of_words_cleaned&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">word_stemmer</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -15709,7 +15654,7 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;bag_of_words_cleaned&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;bag_of_words_cleaned&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
@@ -15722,7 +15667,7 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
@@ -15734,16 +15679,9 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="tokenization">tokenization<a class="anchor-link" href="#tokenization">&#182;</a></h3>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="k">import</span> <span class="n">word_tokenize</span>
@@ -15763,11 +15701,10 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_vocab</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">DF</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">total_vocab</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_vocab</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">result_df</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -15777,16 +15714,110 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">doc_freq</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
-    <span class="n">c</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">c</span><span class="o">=</span><span class="n">DF</span><span class="p">[</span><span class="n">word</span><span class="p">]</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">pass</span>
-    <span class="k">return</span> <span class="n">c</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[70]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>product_uid</th>
+      <th>search_term</th>
+      <th>product_title</th>
+      <th>bag_of_words</th>
+      <th>bag_of_words_cleaned</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>100001</td>
+      <td>angle bracket ,l bracket</td>
+      <td>Simpson Strong-Tie 12-Gauge Angle,Simpson Stro...</td>
+      <td>Bullet01,Bullet02,Bullet03,Bullet04,Bullet05,B...</td>
+      <td>bullet01 bullet02 bullet03 bullet04 bullet05 b...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>100002</td>
+      <td>deck over</td>
+      <td>BEHR Premium Textured DeckOver 1-gal. #SC-141 ...</td>
+      <td>Application Method,Assembled Depth (in.),Assem...</td>
+      <td>applic method assembl depth assembl height ass...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>100005</td>
+      <td>rain shower head ,shower only faucet</td>
+      <td>Delta Vero 1-Handle Shower Only Faucet Trim Ki...</td>
+      <td>Bath Faucet Type,Built-in Water Filter,Bullet0...</td>
+      <td>bath faucet type builtin water filter bullet01...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>100006</td>
+      <td>convection otr ,microwave over stove ,microwaves</td>
+      <td>Whirlpool 1.9 cu. ft. Over the Range Convectio...</td>
+      <td>Appliance Type,Assembled Depth (in.),Assembled...</td>
+      <td>applianc type assembl depth assembl height ass...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>100007</td>
+      <td>emergency light</td>
+      <td>Lithonia Lighting Quantum 2-Light Black LED Em...</td>
+      <td>Battery Power Type,Battery Size,Bulb Type Incl...</td>
+      <td>batteri power type batteri size bulb type incl...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cleaned_df</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;bag_of_words&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15796,67 +15827,10 @@ Name: bag_of_words_cleaned, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">tf_idf</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_words</span><span class="p">):</span>
-    
-    <span class="n">token</span> <span class="o">=</span> <span class="n">processed_text</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">tokens</span> <span class="p">)</span>
-    <span class="n">words_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
-    
-    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
-        <span class="n">tf</span><span class="o">=</span><span class="n">counter</span><span class="p">[</span><span class="n">token</span><span class="p">]</span><span class="o">/</span><span class="n">words_count</span>
-        <span class="n">df</span><span class="o">=</span><span class="n">doc_freq</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-        <span class="n">idf</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">len_words</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-        
-        <span class="n">tf_idf</span><span class="p">[</span><span class="n">doc</span><span class="p">,</span><span class="n">token</span><span class="p">]</span> <span class="o">=</span> <span class="n">tf</span><span class="o">*</span><span class="n">idf</span>
-    <span class="n">doc</span> <span class="o">+=</span><span class="mi">1</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf_idf</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;product&quot;</span><span class="p">)]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tf_idf</span><span class="p">:</span>
-    <span class="n">tf_idf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*=</span><span class="n">alpha</span>
-    
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">tf_idf</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cleaned_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;cleaned_IR_data_final&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
