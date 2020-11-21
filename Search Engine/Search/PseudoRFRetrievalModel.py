@@ -59,7 +59,7 @@ class PseudoRFRetreivalModel:
         document_len_adj = document_len + self.mu
         adj_length=self.mu/self.length
         for word in queries:
-            Collection_freq = self.qrm.TermCollectionFreq(word)
+            Collection_freq = self.qrm.getTermCorpusFreq(word)
             if Collection_freq:
                 docTermFrequency = self.indexReader.getTermDocumentFreq(word, document_id)
                 doc_score *=  alpha*((docTermFrequency + adj_length * Collection_freq)/document_len_adj)+(alphaminus*TokenRFScore[word])
@@ -79,7 +79,7 @@ class PseudoRFRetreivalModel:
         adjustedLength = psuedo_doc_length + self.mu
         adj_length=self.mu/self.length      
         for term in queryTerms:
-            Collection_freq = self.qrm.TermCollectionFreq(term)
+            Collection_freq = self.qrm.getTermCorpusFreq(term)
             if Collection_freq:
                pseudoDocTermFrequency = self.PsuedoTermDocFreq(term, feedbackDocs)
                TokenRFScore[term] =(pseudoDocTermFrequency + (adj_length * Collection_freq))/adjustedLength

@@ -12,6 +12,9 @@ IntermediateOutputFiles = "/data/outputs/intermediate/"
 
 DataWithoutRelevance = IntermediateOutputFiles + "Result_Data_without_relevance.csv"
 
+# Cleaned file
+CleanedDataFile = IntermediateOutputFiles + "Cleaned_Data.csv"
+
 # Path for output files
 OutputFiles = "/data/outputs/"
 

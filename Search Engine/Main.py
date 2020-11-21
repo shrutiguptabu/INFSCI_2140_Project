@@ -6,7 +6,8 @@ from BagOfWords import GenerateBagOfWords
 import Indexing.MyIndexWriter as MyIndexWriter
 import Indexing.MyIndexReader as MyIndexReader
 import Search.QueryRetreivalModel as QueryRetreivalModel
-import Search.ExtractQuery as ExtractQuery
+import Search.PseudoRFRetrievalModel as PseudoRFRetrievalModel
+import Search.TransformQuery as TransformQuery
 
 
 def dataCleaning():
@@ -35,18 +36,19 @@ def indexBuild():
 def indexRead(term):
     index = MyIndexReader.MyIndexReader()
     # retrieve the token.
-    df = index.ProductFreq(term)
+    df = index.DocFreq(term)
     ctf = index.CollectionFreq(term)
     print(" >> the token \""+term+"\" appeared in "+ str(df) +" documents and "+ str(ctf) +" times in total")
-    if df > 0:
+    if df>0:
         posting = index.getPostingList(term)
         for docId in posting:
-            print("Product-Id: " + str(docId) + "\t Frequency: " + str(posting[docId]))
+            docNo = index.getDocNo(docId)
+            print(docNo+"\t"+str(docId)+"\t"+str(posting[docId]))
 
 def qrmSearch():
     index = MyIndexReader.MyIndexReader()
     search = QueryRetreivalModel.QueryRetrievalModel(index)
-    extractor = ExtractQuery.ExtractQuery()
+    extractor = TransformQuery.TransformQuery()
     queries= extractor.getQuries()
     
     for query in queries:
@@ -54,20 +56,33 @@ def qrmSearch():
         results = search.retrieveQuery(query, 20)
         rank = 1
         for result in results:
-            print(query.getQueryId()," Q0 ",result.getProductId(),' ',rank," ",result.getScore()," MYRUN",)
+            print(query.getQueryId()," Q0 ",result.getDocNo(),' ',rank," ",result.getScore()," MYRUN",)
             rank +=1
 
+def psuedoRFSearch():
+    index = MyIndexReader.MyIndexReader()
+    pesudo_search = PseudoRFRetrievalModel.PseudoRFRetreivalModel(index)
+    extractor = TransformQuery.TransformQuery()
+    queries= extractor.getQuries()
+    
+    for query in queries:
+        print(query.queryId,"\t",query.queryContent)
+        results = pesudo_search.retrieveQuery(query, 20, 100, 0.4)
+        rank = 1
+        for result in results:
+            print(query.getQueryId()," Q0 ",result.getDocNo(),' ',rank," ",result.getScore()," MYRUN",)
+            rank +=1
 
 startTime = datetime.datetime.now()
 print('Start Time: ', startTime)
 
-#dataCleaning()
+dataCleaning()
 
-#indexBuild()
+indexBuild()
 
-indexRead('assembly')
-
-#qrmSearch()
+#indexRead('assembl')
+qrmSearch()
+psuedoRFSearch()
 
 
 endTime = datetime.datetime.now()

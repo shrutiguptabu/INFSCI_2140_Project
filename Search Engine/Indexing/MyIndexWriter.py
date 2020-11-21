@@ -1,7 +1,7 @@
+import Classes.Path as Path
 from whoosh import index
 from whoosh.fields import Schema, TEXT, KEYWORD, ID, STORED
 from whoosh.analysis import RegexTokenizer
-import Classes.Path as Path
 import pandas as pd
 import pathlib
 
@@ -12,14 +12,20 @@ class MyIndexWriter:
 
     def __init__(self):
         rootPath = pathlib.Path(__file__).parent.parent.__str__()
-        self.inputFilePath = rootPath + Path.DataWithoutRelevance
+        self.inputFilePath = rootPath + Path.CleanedDataFile
 
-        schema = Schema(product_id=ID(stored=True),
-                        product_description=TEXT(analyzer=RegexTokenizer(), stored=True))
+        schema = Schema(doc_no=ID(stored=True),
+                        doc_content=TEXT(analyzer=RegexTokenizer(), stored=True))
         indexing = index.create_in(rootPath + Path.IndexPath, schema)
         self.writer = indexing.writer()
         return
+
+    # This method build index for each document.
+    def index(self, docNo, content):
+        self.writer.add_document(doc_no=docNo, doc_content=content)
+        return
     
+    # This method build index for entire corpus.
     def indexCorpus(self):
         count = 0
     
@@ -28,19 +34,14 @@ class MyIndexWriter:
         
         # Build index of corpus by product.
         for row in corpus.iterrows():
-            self.index(str(row[1]['product_uid']), row[1]['product_description'])
+            self.index(str(row[1]['product_uid']), row[1]['bag_of_words_cleaned'])
             count+=1
             if count%5000==0:
-                print("finish ", count," products")
+                print("Finished indexing ", count," products")
         
         # Finish
-        print("totally finish ", count, " products")
+        print("Totally finished, indexed ", count, " products")
         self.close()
-        return
-
-    # This method build index for each product.
-    def index(self, productId, productDescription):
-        self.writer.add_document(product_id=productId, product_description=productDescription)
         return
 
     # Close the index writer, and you should output all the buffered content (if any).
