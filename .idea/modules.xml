@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/INFSCI_2140_Project.iml" filepath="$PROJECT_DIR$/.idea/INFSCI_2140_Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/Search Engine/Search Engine.iml" filepath="$PROJECT_DIR$/Search Engine/Search Engine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Search Interface/Search Interface.iml" filepath="$PROJECT_DIR$/Search Interface/Search Interface.iml" />
     </modules>
   </component>
 </project>

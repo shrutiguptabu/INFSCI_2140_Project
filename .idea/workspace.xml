@@ -20,19 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf54f42a-824b-426e-a7c7-509e50e21cda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/INFSCI_2140_Project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Search Engine/BagOfWords/GenerateBagOfWords.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Search Engine/Classes/Path.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Search Engine/DataCleaning/DataMerge.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Search Engine/Main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Search Engine/Search Engine.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Search Engine/data/inputs/ReadMe.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Search Engine/data/outputs/intermediate/ReadMe.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Search Engine/CsvToJsonConverter/csvtojson.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Search Interface/Search Interface.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Search Interface/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Search Engine/Classes/Path.py" beforeDir="false" afterPath="$PROJECT_DIR$/Search Engine/Classes/Path.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Search Engine/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Search Engine/Main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +44,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -82,9 +79,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.18.4" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.19.6" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Search Engine/data/outputs/intermediate" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -92,6 +93,8 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -107,18 +110,7 @@
       <recent name="$PROJECT_DIR$/Search Engine/DataCleaning" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Python.Main">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="Home Depot Search" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -216,6 +208,9 @@
       <module name="Search Engine" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Search Engine" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -328,7 +323,7 @@
       <updated>1605821229761</updated>
       <workItem from="1605821231168" duration="28191000" />
       <workItem from="1605906705872" duration="541000" />
-      <workItem from="1605907253206" duration="1495000" />
+      <workItem from="1605907253206" duration="6079000" />
     </task>
     <task id="LOCAL-00001" summary="Data Cleaning &amp; Data Preprocessing Python Codes (Modular version)">
       <created>1605907018491</created>
@@ -337,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605907018491</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Data Cleaning &amp; Data Preprocessing Python Codes (Modular version)">
+      <created>1605908889719</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605908889719</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,10 +357,18 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Data Cleaning &amp; Data Preprocessing Python Codes (Modular version)" />
     <option name="LAST_COMMIT_MESSAGE" value="Data Cleaning &amp; Data Preprocessing Python Codes (Modular version)" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="320" y="100" key="#Intentions" timestamp="1605920810800">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state x="320" y="100" key="#Intentions/0.23.1440.823@0.23.1440.823" timestamp="1605920810800" />
     <state x="208" y="23" width="1024" height="823" key="#Project_Structure" timestamp="1605908268694">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
@@ -371,42 +381,42 @@
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="316" y="145" width="1000" height="579" key="#xdebugger.evaluate/0.23.1440.823@0.23.1440.823" timestamp="1605908402191" />
-    <state x="131" y="23" key="CommitChangelistDialog2" timestamp="1605907014687">
+    <state x="131" y="23" key="CommitChangelistDialog2" timestamp="1605908889515">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state x="131" y="23" key="CommitChangelistDialog2/0.23.1440.823@0.23.1440.823" timestamp="1605907014687" />
-    <state width="1398" height="264" key="GridCell.Tab.0.bottom" timestamp="1605908610694">
+    <state x="131" y="23" key="CommitChangelistDialog2/0.23.1440.823@0.23.1440.823" timestamp="1605908889515" />
+    <state width="1398" height="300" key="GridCell.Tab.0.bottom" timestamp="1605973192824">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state width="1398" height="264" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1605908610694" />
-    <state width="1398" height="264" key="GridCell.Tab.0.center" timestamp="1605908610694">
+    <state width="1398" height="300" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1605973192824" />
+    <state width="1398" height="300" key="GridCell.Tab.0.center" timestamp="1605973192821">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state width="1398" height="264" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1605908610694" />
-    <state width="1398" height="264" key="GridCell.Tab.0.left" timestamp="1605908610693">
+    <state width="1398" height="300" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1605973192821" />
+    <state width="1398" height="300" key="GridCell.Tab.0.left" timestamp="1605973192821">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state width="1398" height="264" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1605908610693" />
-    <state width="1398" height="264" key="GridCell.Tab.0.right" timestamp="1605908610694">
+    <state width="1398" height="300" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1605973192821" />
+    <state width="1398" height="300" key="GridCell.Tab.0.right" timestamp="1605973192824">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state width="1398" height="264" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1605908610694" />
-    <state width="1398" height="264" key="GridCell.Tab.1.bottom" timestamp="1605908610695">
+    <state width="1398" height="300" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1605973192824" />
+    <state width="1398" height="264" key="GridCell.Tab.1.bottom" timestamp="1605973192587">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state width="1398" height="264" key="GridCell.Tab.1.bottom/0.23.1440.823@0.23.1440.823" timestamp="1605908610695" />
-    <state width="1398" height="264" key="GridCell.Tab.1.center" timestamp="1605908610695">
+    <state width="1398" height="264" key="GridCell.Tab.1.bottom/0.23.1440.823@0.23.1440.823" timestamp="1605973192587" />
+    <state width="1398" height="264" key="GridCell.Tab.1.center" timestamp="1605973192586">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state width="1398" height="264" key="GridCell.Tab.1.center/0.23.1440.823@0.23.1440.823" timestamp="1605908610695" />
-    <state width="1398" height="264" key="GridCell.Tab.1.left" timestamp="1605908610694">
+    <state width="1398" height="264" key="GridCell.Tab.1.center/0.23.1440.823@0.23.1440.823" timestamp="1605973192586" />
+    <state width="1398" height="264" key="GridCell.Tab.1.left" timestamp="1605973192585">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state width="1398" height="264" key="GridCell.Tab.1.left/0.23.1440.823@0.23.1440.823" timestamp="1605908610694" />
-    <state width="1398" height="264" key="GridCell.Tab.1.right" timestamp="1605908610695">
+    <state width="1398" height="264" key="GridCell.Tab.1.left/0.23.1440.823@0.23.1440.823" timestamp="1605973192585" />
+    <state width="1398" height="264" key="GridCell.Tab.1.right" timestamp="1605973192586">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state width="1398" height="264" key="GridCell.Tab.1.right/0.23.1440.823@0.23.1440.823" timestamp="1605908610695" />
+    <state width="1398" height="264" key="GridCell.Tab.1.right/0.23.1440.823@0.23.1440.823" timestamp="1605973192586" />
     <state x="335" y="141" width="1004" height="587" key="NewModule_or_Project.wizard" timestamp="1605908259288">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
@@ -415,10 +425,10 @@
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="333" y="144" key="RollbackChangesDialog/0.23.1440.823@0.23.1440.823" timestamp="1605907853861" />
-    <state x="320" y="174" key="Vcs.Push.Dialog.v2" timestamp="1605907191731">
+    <state x="320" y="174" key="Vcs.Push.Dialog.v2" timestamp="1605908896996">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state x="320" y="174" key="Vcs.Push.Dialog.v2/0.23.1440.823@0.23.1440.823" timestamp="1605907191731" />
+    <state x="320" y="174" key="Vcs.Push.Dialog.v2/0.23.1440.823@0.23.1440.823" timestamp="1605908896996" />
     <state x="174" y="86" width="1240" height="623" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1605907710951">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
@@ -427,10 +437,10 @@
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="100" y="123" width="1240" height="623" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.823@0.23.1440.823" timestamp="1605908755854" />
-    <state x="354" y="33" key="new project wizard" timestamp="1605898711721">
+    <state x="354" y="33" key="new project wizard" timestamp="1605915751117">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
-    <state x="354" y="33" key="new project wizard/0.23.1440.823@0.23.1440.823" timestamp="1605898711721" />
+    <state x="354" y="33" key="new project wizard/0.23.1440.823@0.23.1440.823" timestamp="1605915751117" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
