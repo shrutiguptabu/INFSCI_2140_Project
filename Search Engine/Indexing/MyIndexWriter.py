@@ -14,8 +14,8 @@ class MyIndexWriter:
         rootPath = pathlib.Path(__file__).parent.parent.__str__()
         self.inputFilePath = rootPath + Path.DataWithoutRelevance
 
-        schema = Schema(docId=ID(stored=True),
-                        doc_content=TEXT(analyzer=RegexTokenizer(), stored=True))
+        schema = Schema(product_id=ID(stored=True),
+                        product_description=TEXT(analyzer=RegexTokenizer(), stored=True))
         indexing = index.create_in(rootPath + Path.IndexPath, schema)
         self.writer = indexing.writer()
         return
@@ -26,21 +26,21 @@ class MyIndexWriter:
         # Initiate pre-processed collection file reader.
         corpus = pd.read_csv(self.inputFilePath, encoding="utf-8")
         
-        # Build index of corpus document by document.
+        # Build index of corpus by product.
         for row in corpus.iterrows():
             self.index(str(row[1]['product_uid']), row[1]['product_description'])
             count+=1
             if count%5000==0:
-                print("finish ", count," docs")
+                print("finish ", count," products")
         
         # Finish
-        print("totally finish ", count, " docs")
+        print("totally finish ", count, " products")
         self.close()
         return
 
-    # This method build index for each document.
-    def index(self, docId, content):
-        self.writer.add_document(docId=docId, doc_content=content)
+    # This method build index for each product.
+    def index(self, productId, productDescription):
+        self.writer.add_document(product_id=productId, product_description=productDescription)
         return
 
     # Close the index writer, and you should output all the buffered content (if any).

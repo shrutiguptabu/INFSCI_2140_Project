@@ -17,49 +17,46 @@ class MyIndexReader:
         
         self.searcher = index.open_dir(rootPath + Path.IndexPath).searcher()
 
-    # Return the integer DocumentID of input string DocumentNo.
-    def getDocId(self, docId):
-        return self.searcher.document_number(docId=docId)
-
-#    # Return the string DocumentNo of the input integer DocumentID.
-#    def getDocNo(self, docId):
-#        return self.searcher.stored_fields(docId)["doc_no"]
-
     # Return DF.
-    def DocFreq(self, token):
-        results = self.searcher.search(Term("doc_content", token))
+    def ProductFreq(self, token):
+        results = self.searcher.search(Term("product_description", token))
         return len(results)
 
     # Return the frequency of the token in whole collection/corpus.
     def CollectionFreq(self, token):
-        results = self.searcher.search(Term("doc_content", token), limit=None)
+        results = self.searcher.search(Term("product_description", token), limit=None)
         count = 0
         for result in results:
-            words = self.searcher.stored_fields(result.docnum)["doc_content"].split(" ")
+            words = self.searcher.stored_fields(result.docnum)["product_description"].split(" ")
             for word in words:
                 if word==token:
                     count+=1
         return count
 
-    # Return posting list in form of {documentID:frequency}.
+    # Return posting list in form of {productID:frequency}.
     def getPostingList(self, token):
-        results = self.searcher.search(Term("doc_content", token), limit=None)
+        results = self.searcher.search(Term("product_description", token), limit=None)
         postList = {}
         for result in results:
-            words = self.searcher.stored_fields(result.docnum)["doc_content"].split(" ")
+            print(result)
+            words = self.searcher.stored_fields(result.docnum)["product_description"].split(" ")
+            print(words)
             count=0
             for word in words:
                 if word==token:
                     count+=1
-            postList[result.docnum]=count
+            postList[result['product_id']]=count
+            print(count)
+            if count == 0:
+                break
         return postList
 
-    # Return the length of the requested document.
-    def getDocLength(self, docId):
-        words = self.searcher.stored_fields(docId)["doc_content"].split(" ")
+    # Return the length of the requested product.
+    def getProductDescriptionLength(self, productId):
+        words = self.searcher.stored_fields(productId)["product_description"].split(" ")
         return len(words)
     
-    # Return the total number of documents in the index
-    def getDocumentCount(self):
+    # Return the total number of products in the index
+    def getProductCount(self):
         return self.searcher.doc_count()
     
