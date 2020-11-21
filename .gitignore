@@ -6,3 +6,6 @@
 /Search Engine/data/inputs/train.csv
 /Search Engine/data/outputs/intermediate/Result_Data_without_relevance.csv
 /Search Engine/data/outputs/intermediate/*.csv
+/Search Engine/data/outputs/index/*
+__pycache__/
+*.py[cod]

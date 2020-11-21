@@ -14,3 +14,6 @@ DataWithoutRelevance = IntermediateOutputFiles + "Result_Data_without_relevance.
 
 # Path for output files
 OutputFiles = "/data/outputs/"
+
+# Path for Index
+IndexPath = "/data/outputs/index/"
