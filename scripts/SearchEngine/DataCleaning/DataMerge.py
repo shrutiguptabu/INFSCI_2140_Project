@@ -38,7 +38,21 @@ class DataMerge:
                                        left_on='product_uid', right_on='product_uid')
         print(attribute_df_merged.head(10))
         print(attribute_df_merged.shape)
-        return attribute_df_merged
+        # pickle_in = open("pickle/product_df.pickle","rb")
+        # product_df = pickle.load(pickle_in)
+        # product_df.head()
+        # product_df = product_df[1:20001]
+        # product_df.shape
+        # return attribute_df_merged
+
+        # def get_pickle_file(self):
+
+        # root = pathlib.Path(_file).parent.parent.str_()
+
+        # pickle_in = open(root + Path.pickleFile,"rb")
+        # product_df = pickle.load(pickle_in)
+        # # print(product_df.head(10))
+        # return product_df
 
     def data_load_product_description(self):
         root = pathlib.Path(__file__).parent.parent.__str__()
