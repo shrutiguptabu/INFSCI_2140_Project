@@ -15,6 +15,9 @@ DataWithoutRelevance = IntermediateOutputFiles + "Result_Data_without_relevance.
 # Cleaned file
 CleanedDataFile = IntermediateOutputFiles + "Cleaned_Data.csv"
 
+# input pickle file
+InputPickleFile = "/data/inputs/product_df.pickle"
+
 # Path for output files
 OutputFiles = "/data/outputs/"
 

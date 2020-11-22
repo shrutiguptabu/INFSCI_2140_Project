@@ -4,6 +4,7 @@ from whoosh.fields import Schema, TEXT, KEYWORD, ID, STORED
 from whoosh.analysis import RegexTokenizer
 import pandas as pd
 import pathlib
+import pickle
 
 # Efficiency and memory cost should be paid with extra attention.
 class MyIndexWriter:
@@ -12,7 +13,7 @@ class MyIndexWriter:
 
     def __init__(self):
         rootPath = pathlib.Path(__file__).parent.parent.__str__()
-        self.inputFilePath = rootPath + Path.CleanedDataFile
+        self.inputFilePath = rootPath + Path.InputPickleFile
 
         schema = Schema(doc_no=ID(stored=True),
                         doc_content=TEXT(analyzer=RegexTokenizer(), stored=True))
@@ -30,11 +31,13 @@ class MyIndexWriter:
         count = 0
     
         # Initiate pre-processed collection file reader.
-        corpus = pd.read_csv(self.inputFilePath, encoding="utf-8")
+        pickle_in = open(self.inputFilePath,"rb")
+        product_df = pickle.load(pickle_in)
+        corpus = product_df[1:20001]
         
         # Build index of corpus by product.
         for row in corpus.iterrows():
-            self.index(str(row[1]['product_uid']), row[1]['bag_of_words_cleaned'])
+            self.index(str(row[1]['product_uid']), row[1]['description_words'])
             count+=1
             if count%5000==0:
                 print("Finished indexing ", count," products")

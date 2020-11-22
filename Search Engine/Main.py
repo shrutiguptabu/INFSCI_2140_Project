@@ -56,7 +56,7 @@ def qrmSearch():
         results = search.retrieveQuery(query, 20)
         rank = 1
         for result in results:
-            print(query.getQueryId()," Q0 ",result.getDocNo(),' ',rank," ",result.getScore()," MYRUN",)
+            print(query.getQueryId()," Q0 ",result.getDocNo(),' ',rank," ",result.getScore(),)
             rank +=1
 
 def psuedoRFSearch():
@@ -70,19 +70,19 @@ def psuedoRFSearch():
         results = pesudo_search.retrieveQuery(query, 20, 100, 0.4)
         rank = 1
         for result in results:
-            print(query.getQueryId()," Q0 ",result.getDocNo(),' ',rank," ",result.getScore()," MYRUN",)
+            print(query.getQueryId()," Q0 ",result.getDocNo(),' ',rank," ",result.getScore(),)
             rank +=1
 
 startTime = datetime.datetime.now()
 print('Start Time: ', startTime)
 
-dataCleaning()
+#dataCleaning()
 
 indexBuild()
 
 #indexRead('assembl')
 qrmSearch()
-psuedoRFSearch()
+#psuedoRFSearch()
 
 
 endTime = datetime.datetime.now()
