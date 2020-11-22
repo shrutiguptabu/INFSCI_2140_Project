@@ -12,9 +12,14 @@ IntermediateOutputFiles = "/data/outputs/intermediate/"
 
 DataWithoutRelevance = IntermediateOutputFiles + "Result_Data_without_relevance.csv"
 
+# Cleaned file
+CleanedDataFile = IntermediateOutputFiles + "Cleaned_Data.csv"
+
+# input pickle file
+InputPickleFile = "/data/inputs/product_df.pickle"
+
 # Path for output files
 OutputFiles = "/data/outputs/"
 
-csvFilePath = "/data/outputs/csv/Product_df.csv"
-
-jsonFilePath = "/data/outputs/json/"
+# Path for Index
+IndexPath = "/data/outputs/index/"
