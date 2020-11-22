@@ -8,9 +8,7 @@ var spawn = require("child_process").spawn;
 
 /* GET home page. */
 router.get('/', function(request, response, next) {
-  response.render('index',{
-    welcome: "Hi !"
-  });
+  response.render('index');
 });
 
 /* GET THE STRING amd call Main.py */
@@ -19,7 +17,7 @@ router.post("/result", function(request, response) {
 
   const searchText = request.body.searchBar;
   //Sample product json array
-  var product = [
+  /*var product = [
      {
       product_uid: 1,
       product_title: "Makeup Kit"
@@ -33,10 +31,32 @@ router.post("/result", function(request, response) {
       product_title: "I am a barbie girl"
     }
 
-  ]
+  ];*/
+  let dataString
+  // spawn new child process to call the python script
+  const python = spawn('python', ['samplePythonscript.py', searchText])
+
+  // collect data from script
+  python.stdout.on('data', function (data) {
+    console.log('Pipe data from python script ...')
+    //dataToSend =  data;
+    dataString += data.toString();
+  })
+
+  // in close event we are sure that stream is from child process is closed
+  python.on('close', (code) => {
+    console.log(`child process close all stdio with code ${code}`)
+    // send data to browser
+    
+    result = JSON.parse(dataString.slice(9))
+    //console.log(dataString)
+   return response.render("results",{ value : searchText,products : result});
+  })
+})
   
-   return response.render("results",{ value : searchText,products : product});
-  });
+ 
+  
+
  
   /* GET THE Product title amd call recommend.py */
 
