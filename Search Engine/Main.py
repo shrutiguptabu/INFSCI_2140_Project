@@ -8,6 +8,7 @@ import Indexing.MyIndexReader as MyIndexReader
 import Search.QueryRetreivalModel as QueryRetreivalModel
 import Search.PseudoRFRetrievalModel as PseudoRFRetrievalModel
 import Search.TransformQuery as TransformQuery
+import pandas as pd
 
 
 def dataCleaning():
@@ -46,6 +47,9 @@ def indexRead(term):
             print(docNo+"\t"+str(docId)+"\t"+str(posting[docId]))
 
 def qrmSearch():
+    df_qrm = pd.DataFrame(columns = ['Doc_no','rank','Product_title', 'Result_score'])
+    
+    
     index = MyIndexReader.MyIndexReader()
     search = QueryRetreivalModel.QueryRetrievalModel(index)
     extractor = TransformQuery.TransformQuery()
@@ -56,10 +60,14 @@ def qrmSearch():
         results = search.retrieveQuery(query, 20)
         rank = 1
         for result in results:
-            print(query.getQueryId()," Q0 ",result.getDocNo(),' ',rank," ",result.getDocTitle()," ",result.getScore(),)
+            df_qrm = df_qrm.append({'Doc_no': result.getDocNo(), 'rank': rank, 'Product_title': result.getDocTitle(), 'Result_score' : result.getScore()}, ignore_index=True)
             rank +=1
+        print(df_qrm)
 
 def psuedoRFSearch():
+    
+    df_psuedoRF = pd.DataFrame(columns = ['Doc_no','rank','Product_title', 'Result_score'])
+    
     index = MyIndexReader.MyIndexReader()
     pesudo_search = PseudoRFRetrievalModel.PseudoRFRetreivalModel(index)
     extractor = TransformQuery.TransformQuery()
@@ -70,15 +78,15 @@ def psuedoRFSearch():
         results = pesudo_search.retrieveQuery(query, 20, 100, 0.4)
         rank = 1
         for result in results:
-            print(query.getQueryId()," Q0 ",result.getDocNo(),' ',rank," ",result.getDocTitle()," ",result.getScore(),)
+            df_psuedoRF = df_psuedoRF.append({'Doc_no': result.getDocNo(), 'rank': rank, 'Product_title': result.getDocTitle(), 'Result_score' : result.getScore()}, ignore_index=True)
             rank +=1
-
+        print(df_psuedoRF)
 startTime = datetime.datetime.now()
 print('Start Time: ', startTime)
 
 #dataCleaning()
 
-#indexBuild()
+indexBuild()
 
 #indexRead('assembl')
 qrmSearch()
