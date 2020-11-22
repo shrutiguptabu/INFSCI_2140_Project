@@ -16,14 +16,15 @@ class MyIndexWriter:
         self.inputFilePath = rootPath + Path.InputPickleFile
 
         schema = Schema(doc_no=ID(stored=True),
-                        doc_content=TEXT(analyzer=RegexTokenizer(), stored=True))
+                        doc_content=TEXT(analyzer=RegexTokenizer(), stored=True),
+                        doc_title=TEXT(stored=True))
         indexing = index.create_in(rootPath + Path.IndexPath, schema)
         self.writer = indexing.writer()
         return
 
     # This method build index for each document.
-    def index(self, docNo, content):
-        self.writer.add_document(doc_no=docNo, doc_content=content)
+    def index(self, docNo, content, title):
+        self.writer.add_document(doc_no=docNo, doc_content=content, doc_title=title)
         return
     
     # This method build index for entire corpus.
@@ -37,7 +38,7 @@ class MyIndexWriter:
         
         # Build index of corpus by product.
         for row in corpus.iterrows():
-            self.index(str(row[1]['product_uid']), row[1]['description_words'])
+            self.index(str(row[1]['product_uid']), row[1]['description_words'], row[1]['product_title'])
             count+=1
             if count%5000==0:
                 print("Finished indexing ", count," products")

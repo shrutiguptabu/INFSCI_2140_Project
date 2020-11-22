@@ -23,6 +23,10 @@ class MyIndexReader:
     # Return the string DocumentNo of the input integer DocumentID.
     def getDocNo(self, docId):
         return self.searcher.stored_fields(docId)["doc_no"]
+    
+    # Return the document title
+    def getDocTitle(self, docId):
+        return self.searcher.stored_fields(docId)["doc_title"]
 
     # Return DF.
     def DocFreq(self, token):

@@ -48,6 +48,7 @@ class PseudoRFRetreivalModel:
             for document_id in  posting_list.keys():
                 self.document_result[document_id]=Document.Document()
                 self.document_result[document_id].setDocNo(self.indexReader.getDocNo(document_id))
+                self.document_result[document_id].setDocTitle(self.indexReader.getDocTitle(document_id))
                 self.document_result[document_id].setScore(self.dirichletSmoothMethPseudo(queries_result,document_id,alpha,TokenRFScore))
                 self.document_result[document_id].setDocId(document_id)
         return [doc for doc in sorted(self.document_result.values(), key=attrgetter('score'), reverse = True)][:topN]

@@ -54,6 +54,7 @@ class QueryRetrievalModel:
             newDoc = Document.Document()
             newDoc.setDocId(docId)
             newDoc.setDocNo(self.indexReader.getDocNo(docId))
+            newDoc.setDocTitle(self.indexReader.getDocTitle(docId))
             newDoc.setScore(score)
             
             documents[docId] = newDoc
