@@ -80,7 +80,7 @@ router.post("/result", function(request, response) {
    // response.json(recommend)
    let dataString
    // spawn new child process to call the python script
-   const python = spawn('python', ['samplePythonscript.py', product_title])
+   const python = spawn('python', ['./scripts/SearchEngine/Recommendation.py', product_title])
  
    // collect data from script
    python.stdout.on('data', function (data) {
