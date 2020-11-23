@@ -40,11 +40,11 @@ class MyIndexWriter:
         for row in corpus.iterrows():
             self.index(str(row[1]['product_uid']), row[1]['description_words'], row[1]['product_title'])
             count+=1
-            if count%5000==0:
-                print("Finished indexing ", count," products")
-        
+#            if count%5000==0:
+#                print("Finished indexing ", count," products")
+#        
         # Finish
-        print("Totally finished, indexed ", count, " products")
+#        print("Totally finished, indexed ", count, " products")
         self.close()
         return
 

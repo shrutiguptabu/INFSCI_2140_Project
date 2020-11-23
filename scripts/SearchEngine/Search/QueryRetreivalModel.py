@@ -12,7 +12,7 @@ class QueryRetrievalModel:
         
         # Length of the entire corpus
         docCount = self.indexReader.getDocumentCount()
-        print("docCount: ", docCount)
+        #print("docCount: ", docCount)
         self.corpusLength = self.calc_coll_len(docCount)
         
         # Set the parameter value

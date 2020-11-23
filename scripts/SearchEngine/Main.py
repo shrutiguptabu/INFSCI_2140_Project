@@ -9,6 +9,7 @@ import Search.QueryRetreivalModel as QueryRetreivalModel
 import Search.PseudoRFRetrievalModel as PseudoRFRetrievalModel
 import Search.TransformQuery as TransformQuery
 import pandas as pd
+import sys
 
 
 def dataCleaning():
@@ -47,13 +48,16 @@ def indexRead(term):
             print(docNo+"\t"+str(docId)+"\t"+str(posting[docId]))
 
 def qrmSearch():
+    query = sys.argv[1]
+
     df_qrm = pd.DataFrame(columns = ['Doc_no','rank','Product_title', 'Result_score'])
-    
-    
+        
     index = MyIndexReader.MyIndexReader()
     search = QueryRetreivalModel.QueryRetrievalModel(index)
     extractor = TransformQuery.TransformQuery()
-    queries= extractor.getQuries()
+    #extractor.getQuries(query)
+    queries= extractor.getQuries(query)
+
     
     for query in queries:
         print(query.queryId,"\t",query.queryContent)
@@ -65,14 +69,15 @@ def qrmSearch():
         print(df_qrm)
 
 def psuedoRFSearch():
-    
+    query = sys.argv[1]
+
     df_psuedoRF = pd.DataFrame(columns = ['Doc_no','rank','Product_title', 'Result_score'])
     
     index = MyIndexReader.MyIndexReader()
     pesudo_search = PseudoRFRetrievalModel.PseudoRFRetreivalModel(index)
     extractor = TransformQuery.TransformQuery()
-    queries= extractor.getQuries()
-    
+    queries= extractor.getQuries(query)
+
     for query in queries:
         print(query.queryId,"\t",query.queryContent)
         results = pesudo_search.retrieveQuery(query, 20, 100, 0.4)
@@ -86,7 +91,7 @@ print('Start Time: ', startTime)
 
 #dataCleaning()
 
-indexBuild()
+#indexBuild()
 
 #indexRead('assembl')
 qrmSearch()

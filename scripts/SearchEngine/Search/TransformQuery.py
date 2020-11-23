@@ -1,6 +1,7 @@
 import Classes.Query as Query
 import BagOfWords.GenerateBagOfWords as Normalizer
 
+
 class TransformQuery:
 
     def __init__(self):
@@ -8,11 +9,12 @@ class TransformQuery:
         return
 
     # Return extracted queries with class Query in a list.
-    def getQuries(self):
+    def getQuries(self,q):
+        self.q = q
         queries=[]
         aQuery=Query.Query()
         aQuery.setQueryId("1")
-        aQuery.setQueryContent(self.transformQuery("Gas Stove with Thermostat"))
+        aQuery.setQueryContent(self.transformQuery(self.q))
         queries.append(aQuery)
 
         return queries
