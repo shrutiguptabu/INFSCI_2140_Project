@@ -34,7 +34,7 @@ router.post("/result", function(request, response) {
   ];*/
   let dataString
   // spawn new child process to call the python script
-  const python = spawn('python', ['samplePythonscript.py', searchText])
+  const python = spawn('python', ['./scripts/SearchEngine/Main_Copy.py', searchText])
 
   // collect data from script
   python.stdout.on('data', function (data) {
@@ -62,7 +62,7 @@ router.post("/result", function(request, response) {
 
   router.get('/:title/recommend', function(request, response, next) {
     product_title = request.params.title;
-    
+    /*
     var recommend = [
       {
        product_uid: 1,
@@ -75,10 +75,32 @@ router.post("/result", function(request, response) {
      {
        product_uid: 3,
        product_title: "I am a barbie girl"
-     }]
+     }]*/
 
    // response.json(recommend)
-   return response.render("recommend",{ value : product_title ,products : recommend});
+   let dataString
+   // spawn new child process to call the python script
+   const python = spawn('python', ['samplePythonscript.py', product_title])
+ 
+   // collect data from script
+   python.stdout.on('data', function (data) {
+     console.log('Pipe data from python script ...')
+     //dataToSend =  data;
+     dataString += data.toString();
+   })
+ 
+   // in close event we are sure that stream is from child process is closed
+   python.on('close', (code) => {
+     console.log(`child process close all stdio with code ${code}`)
+     // send data to browser
+     
+     result = JSON.parse(dataString.slice(9))
+     //console.log(dataString)
+     return response.render("recommend",{ value : product_title ,products : result});
+   })
+
+
+   
 
   });
 
