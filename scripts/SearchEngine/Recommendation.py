@@ -61,7 +61,7 @@ def get_recommendations(query, cosine_sim=calculate_cosine_similarity_matrix()):
     # cosine_sim = calculate_cosine_similarity_matrix()
     # Get the index of the product that matches the query
 
-    # gettin the index of the movie that matches the title
+    # gettin the index of the product that matches the title
     idx = create_indices()[query]
 
     # Get the pairwsie similarity scores of all products with that product
@@ -71,7 +71,7 @@ def get_recommendations(query, cosine_sim=calculate_cosine_similarity_matrix()):
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
 
     # Get the scores of the 10 most similar product
-    sim_scores = sim_scores[1:15]
+    sim_scores = sim_scores[1:10]
 
     # Get the product indices
     product_indices = [i[0] for i in sim_scores]
