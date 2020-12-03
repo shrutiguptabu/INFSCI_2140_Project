@@ -36,7 +36,7 @@ Make sure you have nodejs and python3 installed on your machine. Also, please cr
 1. Open Terminal and navigate to the project folder <br/>
 2. Type `npm install` & press enter <br/>
 3. and type `npm start` to start the server.
-4. The landing page is available on localhost:3000/
+4. The landing page is available on `localhost:3000/`
 
 
 ## Example Search Queries
