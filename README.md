@@ -18,6 +18,7 @@ top 10 recommendations for the product. This search engine uses Psuedo Relevance
 ## Technologies Used
 
 | Module | Technology |
+|----------- | ----------------------|
 |Front End | EJS template, HTML , CSS |
 |Middleware| Nodejs, Expressjs |
 | Search Engine| Python 3|
