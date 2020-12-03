@@ -1,7 +1,7 @@
 # Product Search & Recommendation 
 ### Fall 2020 Information Storage and Retrieval Project
 
-Product Search and Recommendation for Novice businesses that do not have history of users. We only need product titles and descriptions and we can get <br/>
+Product Search and Recommendation for Novice businesses that do not have history of users. We only need product titles and descriptions and we can get 
 top 10 recommendations for the product. This search engine uses Psuedo Relevance Feedback Model and Content Based Recommendation.
 
 
@@ -49,5 +49,5 @@ Make sure you have nodejs and python3 installed on your machine. Also, please cr
 Link : https://docs.google.com/presentation/d/1mH4k88DwfkKh4Q25JyAXK4k31-oJAoHbJKQI2kA_rPg/edit#slide=id.gcb9a0b074_1_156
 
 
-
+#### Please note: This repository uses `git lfs` objects. Kindly redownload the dataset and use the scripts/pyNotebooks/DataCleaning_f.ipynb to reclean the dataset and create the pickle file. For more information, please refer to https://git-lfs.github.com
 
